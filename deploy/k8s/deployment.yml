@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plant-pathology-app-deployment
+  labels:
+    app: plant-pathology-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: plant-pathology-app
+  template:
+    metadata:
+      labels:
+        app: plant-pathology-app
+    spec:
+      containers:
+      - name: plant-pathology-app-container
+        image: public.ecr.aws/e5h2j1z6/plant-pathology-app:latest
+        ports:
+        - containerPort: 443
